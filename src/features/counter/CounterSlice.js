@@ -17,7 +17,7 @@ export const counterSlice=createSlice({
             state.value=0
 
         },
-        set: (state,action)=>{
+        setValueCount: (state,action)=>{
             state.value=action.payload
         },
         incrementByAmount: (state,action)=>{
@@ -32,5 +32,5 @@ export const counterSlice=createSlice({
 }
 );
 export const selectCount = (state) => state.counter.value;
-export const {increment,decrement,reset,set,incrementByAmount,decrementByAmount}=counterSlice.actions;
+export const {increment,decrement,reset,setValueCount,set,incrementByAmount,decrementByAmount}=counterSlice.actions;
 export default counterSlice.reducer;

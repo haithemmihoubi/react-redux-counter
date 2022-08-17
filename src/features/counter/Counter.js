@@ -1,13 +1,14 @@
 
-import React from 'react';
-import {decrement, decrementByAmount, increment, incrementByAmount, selectCount} from "./CounterSlice";
+import React, {useState} from 'react';
+import {decrement, decrementByAmount, increment, incrementByAmount,setValueCount, reset, selectCount} from "./CounterSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 export function Counter() {
     const dispatch = useDispatch();
     const count = useSelector(selectCount);
-    const [amount, setAmount] = React.useState(0);
-    const [decrementAmount, setdeDrementAmount] = React.useState(0);
+    const [amount, setAmount] = useState(0);
+    const [decrementAmount, setdeDrementAmount] = useState(0);
+    const [value, setValue] = useState(0);
 
     return (
         <div>
@@ -25,6 +26,13 @@ export function Counter() {
                 <input type={"number"}  onChange={event => setdeDrementAmount(event.target.value)}  />
                 <button onClick={() => dispatch( decrementByAmount(decrementAmount || 0))}>decrement amount</button>
 
+            </div>
+            <div>
+                <button onClick={() => dispatch(reset())}>Reset</button>
+            </div>
+            <div>
+                <input type={"number"} onChange={event => setValue(event.target.value)} />
+                <button onClick={() => dispatch(setValueCount(value|| 0))}>set value</button>
             </div>
         </div>
     );
